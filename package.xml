@@ -10,7 +10,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2017-10-17</date>
+ <date>2017-10-20</date>
  <version>
   <release>1.6.4</release>
   <api>1.6.0</api>
@@ -50,7 +50,6 @@
       </dir> <!-- /test/Horde/Stream/Stream -->
       <file name="AllTests.php" role="test" />
       <file name="bootstrap.php" role="test" />
-      <file name="phpunit.xml" role="test" />
      </dir> <!-- /test/Horde/Stream -->
     </dir> <!-- /test/Horde -->
    </dir> <!-- /test -->
@@ -110,7 +109,6 @@
    <install as="LICENSE" name="LICENSE" />
    <install as="Horde/Stream/AllTests.php" name="test/Horde/Stream/AllTests.php" />
    <install as="Horde/Stream/bootstrap.php" name="test/Horde/Stream/bootstrap.php" />
-   <install as="Horde/Stream/phpunit.xml" name="test/Horde/Stream/phpunit.xml" />
    <install as="Horde/Stream/Stream/ExistingTest.php" name="test/Horde/Stream/Stream/ExistingTest.php" />
    <install as="Horde/Stream/Stream/StringTest.php" name="test/Horde/Stream/Stream/StringTest.php" />
    <install as="Horde/Stream/Stream/TempStringStreamTest.php" name="test/Horde/Stream/Stream/TempStringStreamTest.php" />
@@ -302,7 +300,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2017-10-17</date>
+   <date>2017-10-20</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
