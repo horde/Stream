@@ -10,7 +10,7 @@
   <email>slusarz@horde.org</email>
   <active>yes</active>
  </lead>
- <date>2016-02-02</date>
+ <date>2017-10-30</date>
  <version>
   <release>1.6.4</release>
   <api>1.6.0</api>
@@ -28,6 +28,7 @@
    <dir name="doc">
     <dir name="Horde">
      <dir name="Stream">
+      <file name="CHANGES" role="doc" />
       <file name="COPYING" role="doc" />
      </dir> <!-- /doc/Horde/Stream -->
     </dir> <!-- /doc/Horde -->
@@ -107,6 +108,7 @@
  </dependencies>
  <phprelease>
   <filelist>
+   <install as="CHANGES" name="doc/Horde/Stream/CHANGES" />
    <install as="COPYING" name="doc/Horde/Stream/COPYING" />
    <install as="Horde/Stream.php" name="lib/Horde/Stream.php" />
    <install as="Horde/Stream/Exception.php" name="lib/Horde/Stream/Exception.php" />
@@ -308,7 +310,7 @@
    <stability>
     <release>stable</release>
     <api>stable</api></stability>
-   <date>2016-02-02</date>
+   <date>2017-10-30</date>
    <license uri="http://www.horde.org/licenses/lgpl21">LGPL-2.1</license>
    <notes>
 * 
