@@ -58,7 +58,6 @@
       </dir> <!-- /test/Horde/Stream/Stream -->
       <file name="AllTests.php" role="test" />
       <file name="bootstrap.php" role="test" />
-      <file name="phpunit.xml" role="test" />
      </dir> <!-- /test/Horde/Stream -->
     </dir> <!-- /test/Horde -->
    </dir> <!-- /test -->
@@ -118,7 +117,6 @@
    <install as="Horde/Stream/TempString.php" name="lib/Horde/Stream/TempString.php" />
    <install as="Horde/Stream/AllTests.php" name="test/Horde/Stream/AllTests.php" />
    <install as="Horde/Stream/bootstrap.php" name="test/Horde/Stream/bootstrap.php" />
-   <install as="Horde/Stream/phpunit.xml" name="test/Horde/Stream/phpunit.xml" />
    <install as="Horde/Stream/Stream/ExistingTest.php" name="test/Horde/Stream/Stream/ExistingTest.php" />
    <install as="Horde/Stream/Stream/StringTest.php" name="test/Horde/Stream/Stream/StringTest.php" />
    <install as="Horde/Stream/Stream/TempStringStreamTest.php" name="test/Horde/Stream/Stream/TempStringStreamTest.php" />
