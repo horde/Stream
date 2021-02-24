@@ -32,9 +32,6 @@
     "autoload": {
         "psr-0": {
             "Horde_Stream": "lib/"
-        },
-        "psr-4": {
-            "Horde\\Stream\\": "src/"
         }
     }
 }
