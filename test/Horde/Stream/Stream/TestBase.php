@@ -11,6 +11,8 @@
  * @package    Stream
  * @subpackage UnitTests
  */
+namespace Horde\Stream\Stream;
+use Horde_Test_Case as TestCase;
 
 /**
  * Common testing code for Horde_Stream class implementations.
@@ -23,7 +25,7 @@
  * @package    Stream
  * @subpackage UnitTests
  */
-abstract class Horde_Stream_Stream_TestBase extends Horde_Test_Case
+abstract class TestBase extends TestCase
 {
     abstract protected function _getOb();
 

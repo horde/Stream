@@ -11,6 +11,8 @@
  * @package    Stream
  * @subpackage UnitTests
  */
+namespace Horde\Stream\Stream;
+use \Horde_Stream_String;
 
 /**
  * Tests for the Horde_Stream_String class.
@@ -23,7 +25,7 @@
  * @package    Stream
  * @subpackage UnitTests
  */
-class Horde_Stream_Stream_StringTest extends Horde_Stream_Stream_TestBase
+class StringTest extends TestBase
 {
     protected function _getOb()
     {
