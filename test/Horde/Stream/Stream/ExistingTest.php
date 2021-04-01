@@ -11,6 +11,8 @@
  * @package    Stream
  * @subpackage UnitTests
  */
+namespace Horde\Stream\Stream;
+use \Horde_Stream_Existing;
 
 /**
  * Tests for the Horde_Stream_Existing class.
@@ -23,7 +25,7 @@
  * @package    Stream
  * @subpackage UnitTests
  */
-class Horde_Stream_Stream_ExistingTest extends Horde_Stream_Stream_TestBase
+class ExistingTest extends TestBase
 {
     protected function _getOb()
     {

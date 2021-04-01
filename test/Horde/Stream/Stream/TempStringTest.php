@@ -11,6 +11,8 @@
  * @package    Stream
  * @subpackage UnitTests
  */
+namespace Horde\Stream\Stream;
+use \Horde_Stream_TempString;
 
 /**
  * Tests for the Horde_Stream_TempString class, with the data being stored
@@ -25,7 +27,7 @@
  * @package    Stream
  * @subpackage UnitTests
  */
-class Horde_Stream_Stream_TempStringTest extends Horde_Stream_Stream_TestBase
+class TempStringTest extends TestBase
 {
     protected function _getOb()
     {
