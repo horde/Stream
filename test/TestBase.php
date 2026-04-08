@@ -1,33 +1,27 @@
 <?php
+
 /**
- * Copyright 2014-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2014-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
- *
- * @category   Horde
- * @copyright  2014-2016 Horde LLC
- * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @package    Stream
- * @subpackage UnitTests
  */
-namespace Horde\Stream\Stream;
-use Horde_Test_Case as TestCase;
+
+namespace Horde\Stream\Test;
+
+use Horde_Stream;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Common testing code for Horde_Stream class implementations.
  *
  * @author     Michael Slusarz <slusarz@horde.org>
- * @category   Horde
- * @copyright  2014-2016 Horde LLC
- * @ignore
+ * @copyright  2014-2026 Horde LLC
  * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @package    Stream
- * @subpackage UnitTests
  */
 abstract class TestBase extends TestCase
 {
-    abstract protected function _getOb();
+    abstract protected function _getOb(): Horde_Stream;
 
     public function testPos()
     {
@@ -254,6 +248,15 @@ abstract class TestBase extends TestCase
             $long_string,
             $stream4->getToChar("B\n", false)
         );
+
+        // Multi-char delimiter not present in stream returns rest of content.
+        $stream5 = $this->_getOb();
+        $stream5->add('ABCDEF', true);
+
+        $this->assertEquals(
+            'ABCDEF',
+            $stream5->getToChar('XY')
+        );
     }
 
     public function testLength()
@@ -420,6 +423,24 @@ abstract class TestBase extends TestCase
         $this->assertNull($stream->search('35'));
     }
 
+    public function testAddResource()
+    {
+        $resource = fopen('php://temp', 'r+');
+        fwrite($resource, 'hello world');
+        fseek($resource, 0);
+
+        $stream = $this->_getOb();
+        $stream->add($resource);
+
+        $this->assertEquals(11, $stream->length());
+        $this->assertEquals('hello world', $stream->getString(0));
+
+        // Original resource position should be restored.
+        $this->assertEquals(0, ftell($resource));
+
+        fclose($resource);
+    }
+
     public function testAddMethod()
     {
         $stream = $this->_getOb();
@@ -542,6 +563,19 @@ abstract class TestBase extends TestCase
         );
     }
 
+    public function testUtf8CharProperty()
+    {
+        $stream = $this->_getOb();
+
+        $this->assertFalse($stream->utf8_char);
+
+        $stream->utf8_char = true;
+        $this->assertTrue($stream->utf8_char);
+
+        $stream->utf8_char = false;
+        $this->assertFalse($stream->utf8_char);
+    }
+
     public function testUtf8Parsing()
     {
         $test = 'Aönön';
@@ -597,6 +631,29 @@ abstract class TestBase extends TestCase
             4,
             $stream->search('ön', true)
         );
+    }
+
+    public function testUtf8MultiByteChars()
+    {
+        // 3-byte UTF-8: € (U+20AC) = 0xE2 0x82 0xAC
+        $stream = $this->_getOb();
+        $stream->add('A€B', true);
+        $stream->utf8_char = true;
+
+        $this->assertEquals(3, $stream->length(true));
+        $this->assertEquals('A', $stream->getChar());
+        $this->assertEquals('€', $stream->getChar());
+        $this->assertEquals('B', $stream->getChar());
+
+        // 4-byte UTF-8: 𐍈 (U+10348, Gothic letter Hwair) = 0xF0 0x90 0x8D 0x88
+        $stream2 = $this->_getOb();
+        $stream2->add("A\xF0\x90\x8D\x88B", true);
+        $stream2->utf8_char = true;
+
+        $this->assertEquals(3, $stream2->length(true));
+        $this->assertEquals('A', $stream2->getChar());
+        $this->assertEquals("\xF0\x90\x8D\x88", $stream2->getChar());
+        $this->assertEquals('B', $stream2->getChar());
     }
 
     public function testParsingAnExistingStreamObject()
@@ -697,4 +754,23 @@ abstract class TestBase extends TestCase
         );
     }
 
+    public function testSubstringNegativeLength()
+    {
+        $stream = $this->_getOb();
+        $stream->add('1234567890');
+        $stream->rewind();
+
+        // Negative length: omit last 3 bytes.
+        $this->assertEquals(
+            '1234567',
+            $stream->substring(0, -3)
+        );
+
+        // Negative length larger than remaining content returns empty string.
+        $stream->seek(8, false);
+        $this->assertEquals(
+            '',
+            $stream->substring(0, -5)
+        );
+    }
 }
