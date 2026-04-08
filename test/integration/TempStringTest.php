@@ -1,40 +1,41 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * Copyright 2014-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2014-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
- *
- * @category   Horde
- * @copyright  2014-2016 Horde LLC
- * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @package    Stream
- * @subpackage UnitTests
  */
-namespace Horde\Stream\Stream;
-use \Horde_Stream_TempString;
+
+namespace Horde\Stream\Test\Integration;
+
+use Horde_Stream;
+use Horde_Stream_String;
+use Horde_Stream_TempString;
+use Horde\Stream\Test\TestBase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * Tests for the Horde_Stream_TempString class, with the data being stored
  * in a native PHP string variable internally.
  *
- *
  * @author     Michael Slusarz <slusarz@horde.org>
- * @category   Horde
- * @copyright  2014-2016 Horde LLC
- * @ignore
+ * @copyright  2014-2026 Horde LLC
  * @license    http://www.horde.org/licenses/lgpl21 LGPL 2.1
- * @package    Stream
- * @subpackage UnitTests
  */
+#[CoversClass(Horde_Stream_TempString::class)]
+#[CoversClass(Horde_Stream_String::class)]
+#[CoversClass(Horde_Stream::class)]
 class TempStringTest extends TestBase
 {
-    protected function _getOb()
+    protected function _getOb(): Horde_Stream
     {
         return new Horde_Stream_TempString();
     }
 
-    public function testNotUsingStream()
+    public function testNotUsingStream(): void
     {
         $ob = $this->_getOb();
         $ob->add('123');
@@ -42,17 +43,16 @@ class TempStringTest extends TestBase
         $this->assertFalse($ob->use_stream);
     }
 
-    public function testMaxMemory()
+    public function testMaxMemory(): void
     {
-        $ob = new Horde_Stream_TempString(array('max_memory' => 1));
+        $ob = new Horde_Stream_TempString(['max_memory' => 1]);
         $ob->add('abcdefg');
         $this->assertTrue($ob->use_stream);
         $this->assertEquals('abcdefg', $ob->__toString());
 
-        $ob = new Horde_Stream_TempString(array('max_memory' => 10));
+        $ob = new Horde_Stream_TempString(['max_memory' => 10]);
         $ob->add('abcd');
         $this->assertFalse($ob->use_stream);
         $this->assertEquals('abcd', $ob->__toString());
     }
-
 }
