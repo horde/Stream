@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2014-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2014-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -34,7 +35,7 @@ class Horde_Stream_String extends Horde_Stream
      *
      * @throws InvalidArgumentException
      */
-    public function __construct(array $opts = array())
+    public function __construct(array $opts = [])
     {
         if (!isset($opts['string']) || !is_string($opts['string'])) {
             throw new InvalidArgumentException('Need a PHP string.');

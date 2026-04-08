@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2012-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2012-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -52,7 +53,7 @@ class Horde_Stream implements Serializable
      *
      * @param array $opts  Configuration options.
      */
-    public function __construct(array $opts = array())
+    public function __construct(array $opts = [])
     {
         $this->_params = $opts;
         $this->_init();
@@ -74,8 +75,8 @@ class Horde_Stream implements Serializable
     public function __get($name)
     {
         switch ($name) {
-        case 'utf8_char':
-            return $this->_utf8_char;
+            case 'utf8_char':
+                return $this->_utf8_char;
         }
     }
 
@@ -84,9 +85,9 @@ class Horde_Stream implements Serializable
     public function __set($name, $value)
     {
         switch ($name) {
-        case 'utf8_char':
-            $this->_utf8_char = (bool)$value;
-            break;
+            case 'utf8_char':
+                $this->_utf8_char = (bool) $value;
+                break;
         }
     }
 
@@ -295,9 +296,9 @@ class Horde_Stream implements Serializable
                     }
                 }
 
-                if ($single_char ||
-                    is_null($found_pos) ||
-                    ($this->getString($found_pos, $found_pos + $len - 1) == $char)) {
+                if ($single_char
+                    || is_null($found_pos)
+                    || ($this->getString($found_pos, $found_pos + $len - 1) == $char)) {
                     break;
                 }
 
@@ -376,11 +377,11 @@ class Horde_Stream implements Serializable
         /* If length is greater than remaining stream, use more efficient
          * algorithm below. Also, if doing a negative length, deal with that
          * below also. */
-        if ($char &&
-            $this->_utf8_char &&
-            !$to_end &&
-            ($length >= 0) &&
-            ($length < ($this->length() - $this->pos()))) {
+        if ($char
+            && $this->_utf8_char
+            && !$to_end
+            && ($length >= 0)
+            && ($length < ($this->length() - $this->pos()))) {
             while ($length-- && (($char = $this->getChar()) !== false)) {
                 $out .= $char;
             }
@@ -518,7 +519,7 @@ class Horde_Stream implements Serializable
     public function seek($offset = 0, $curr = true, $char = false)
     {
         if (!$offset) {
-            return (bool)$curr ?: $this->rewind();
+            return (bool) $curr ?: $this->rewind();
         }
 
         if ($offset < 0) {
@@ -621,10 +622,10 @@ class Horde_Stream implements Serializable
     {
         $this->_params['_pos'] = $this->pos();
 
-        return array(
+        return [
             strval($this),
-            $this->_params
-        );
+            $this->_params,
+        ];
     }
 
     /**

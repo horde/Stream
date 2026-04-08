@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2014-2017 Horde LLC (http://www.horde.org/)
+ * Copyright 2014-2026 Horde LLC (http://www.horde.org/)
  *
  * See the enclosed file LICENSE for license information (LGPL). If you
  * did not receive this file, see http://www.horde.org/licenses/lgpl21.
@@ -41,14 +42,14 @@ class Horde_Stream_TempString extends Horde_Stream_Temp
 
     /**
      */
-    public function __construct(array $opts = array())
+    public function __construct(array $opts = [])
     {
         parent::__construct($opts);
 
         $temp = '';
-        $this->_string = new Horde_Stream_String(array(
-            'string' => $temp
-        ));
+        $this->_string = new Horde_Stream_String([
+            'string' => $temp,
+        ]);
     }
 
     /**
@@ -69,14 +70,14 @@ class Horde_Stream_TempString extends Horde_Stream_Temp
     public function __get($name)
     {
         switch ($name) {
-        case 'stream':
-            if ($this->_string) {
-                return $this->_string->stream;
-            }
-            break;
+            case 'stream':
+                if ($this->_string) {
+                    return $this->_string->stream;
+                }
+                break;
 
-        case 'use_stream':
-            return !(bool)$this->_string;
+            case 'use_stream':
+                return !(bool) $this->_string;
         }
 
         return parent::__get($name);
@@ -87,11 +88,11 @@ class Horde_Stream_TempString extends Horde_Stream_Temp
     public function __set($name, $value)
     {
         switch ($name) {
-        case 'utf8_char':
-            if ($this->_string) {
-                $this->_string->utf8_char = $value;
-            }
-            break;
+            case 'utf8_char':
+                if ($this->_string) {
+                    $this->_string->utf8_char = $value;
+                }
+                break;
         }
 
         parent::__set($name, $value);
@@ -267,10 +268,10 @@ class Horde_Stream_TempString extends Horde_Stream_Temp
     public function __serialize()
     {
         if ($this->_string) {
-            return array(
+            return [
                 $this->_string,
-                $this->_params
-            );
+                $this->_params,
+            ];
         } else {
             return parent::__serialize();
         }
