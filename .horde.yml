@@ -30,8 +30,14 @@ dependencies:
     php: ^7.4 || ^8
     composer:
       horde/exception: ^3
+  dev:
+    composer:
+      horde/stream_wrapper: ^3
+      horde/util: ^3
   optional:
     composer:
       horde/stream_wrapper: ^3
-      horde/test: ^3
       horde/util: ^3
+keywords:
+  - streams
+vendor: horde

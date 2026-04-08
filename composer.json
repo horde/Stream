@@ -21,12 +21,10 @@
     ],
     "require": {
         "php": "^7.4 || ^8",
-        "horde/exception": "^3 || dev-FRAMEWORK_6_0"
+        "horde/exception": "^3 || dev-FRAMEWORK_6_0",
+        "horde/stream_wrapper": "dev-FRAMEWORK_6_0"
     },
-    "require-dev": {},
     "suggest": {
-        "horde/stream_wrapper": "^3 || dev-FRAMEWORK_6_0",
-        "horde/test": "^3 || dev-FRAMEWORK_6_0",
         "horde/util": "^3 || dev-FRAMEWORK_6_0"
     },
     "autoload": {
