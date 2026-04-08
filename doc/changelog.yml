@@ -9,7 +9,6 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: |+
-    
 2.0.0alpha4:
   api: 2.0.0alpha1
   state:
@@ -52,6 +51,71 @@
     identifier: LGPL-2.1
     uri: http://www.horde.org/licenses/lgpl21
   notes: ~
+2.0.0-beta1:
+  api: 2.0.0-beta1
+  state:
+    release: beta
+    api: beta
+  date: 2026-04-08
+  license:
+    identifier: LGPL-2.1-only
+    uri: https://spdx.org/licenses/LGPL-2.1-only.html
+  notes: |-
+    chore: add keywords, add gitignore entries, update composer.json
+    style: php-cs-fixer
+    test: Modernize unit test suite and improve coverage
+    Development mode for Stream-2.0.0alpha5
+    Released Stream-2.0.0alpha4
+    Add __serialize/__unserialize
+    Update metadata and workflows for PHP 8 support
+    Add CI job for satis repo update
+    Update metadata and workflows for PHP 8 support
+    Add CI job for satis repo update
+    no errors
+    Development mode for Stream-2.0.0alpha5
+    Released Stream-2.0.0alpha3
+    Development mode for Stream-2.0.0alpha4
+    Released Stream-2.0.0alpha2
+    Development mode for Stream-2.0.0alpha3
+    Released Stream-2.0.0alpha1
+    Components updated the package files.
+    Remove json serialization
+    Add __serialize/__unserialize
+    Update supported PHP versions and configuration names.
+    Standardize descriptions.
+    Add chomp character.
+    Enable PHP 7.3 CI.
+    Update package definitions.
+    Fix getting exit code on PHP 7.2+.
+    Mark Chuck and Michael as inactive.
+    package.xml must not contain empty <notes> tags.
+    Create CHANGES for all components.
+    Regenerate package.xml from changelog.yml.
+    Build changelog.yml from existing changelog(s).
+    Update .horde.yml with extended information.
+    Update composer.json.
+    Enable 7.2 builds.
+    PEAR on 5.6 and 7.0 is fixed.
+    Update file list
+    Move phpunit configuration to base directory.
+    Update references to COPYING files.
+    Use LICENSE consistently and move to base directory.
+    Stop flooding #horde channel.
+    Use https URLs.
+    Install all dependencies but PECL extensions.
+    Hopefully this finally fixes Travis builds now.
+    Always discover channel manually, due to Travis bug.
+    Fix Travis tests.
+    Add Travis configuration and .gitignore files.
+    Add type parameter to .horde.yml files.
+    Update composer information.
+    Updated composer definitions.
+    Rename horde.yml files.
+    Standardize library full names.
+    Generate horde.yml files for all components.
+    Happy New Year!
+    Use HTTPS.
+    Development mode for Horde_Stream-1.6.4
 1.6.3:
   api: 1.6.0
   state:
@@ -178,17 +242,6 @@
     [mms] Allow Horde_Stream object to be cloned.
     [mms] Allow Horde_Stream object to be serialized (Bug #11598).
     [mms] Add Horde_Stream#__toString().
-1.0.0:
-  api: 1.0.0
-  state:
-    release: stable
-    api: stable
-  date: 2012-10-30
-  license:
-    identifier: LGPL-2.1
-    uri: http://www.horde.org/licenses/lgpl21
-  notes: |
-    First stable release for Horde 5.
 1.0.0beta1:
   api: 1.0.0beta1
   state:
@@ -200,3 +253,14 @@
     uri: http://www.horde.org/licenses/lgpl21
   notes: |
     First beta release for Horde 5.
+1.0.0:
+  api: 1.0.0
+  state:
+    release: stable
+    api: stable
+  date: 2012-10-30
+  license:
+    identifier: LGPL-2.1
+    uri: http://www.horde.org/licenses/lgpl21
+  notes: |
+    First stable release for Horde 5.
