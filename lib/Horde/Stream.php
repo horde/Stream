@@ -590,7 +590,7 @@ class Horde_Stream implements Serializable
      */
     public function close()
     {
-        if ($this->stream) {
+        if (is_resource($this->stream)) {
             fclose($this->stream);
         }
     }
