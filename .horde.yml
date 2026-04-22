@@ -27,7 +27,7 @@ license:
   uri: http://www.horde.org/licenses/lgpl21
 dependencies:
   required:
-    php: ^7.4 || ^8
+    php: ^8.1
     composer:
       horde/exception: ^3
   dev:
@@ -40,4 +40,8 @@ dependencies:
       horde/util: ^3
 keywords:
   - streams
+  - bytestream
 vendor: horde
+quality:
+  phpstan:
+    level: 5
