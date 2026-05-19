@@ -116,6 +116,19 @@
     Happy New Year!
     Use HTTPS.
     Development mode for Horde_Stream-1.6.4
+2.0.0-RC1:
+  api: 2.0.0-RC1
+  state:
+    release: RC
+    api: RC
+  date: 2026-05-19
+  license:
+    identifier: LGPL-2.1-only
+    uri: https://spdx.org/licenses/LGPL-2.1-only.html
+  notes: |-
+    docs: README, UPGRADING, USAGE
+    feat: Modern implementation of Stream
+    fix: backport community fix from bytestream fork
 1.6.3:
   api: 1.6.0
   state:
